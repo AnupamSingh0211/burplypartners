@@ -1,4 +1,4 @@
-package com.hala.burplypartners
+package com.hala.burplypartners.onboarding
 
 
 import android.support.v4.app.Fragment
@@ -16,7 +16,7 @@ class OnboardingPagerAdapter(fragementManager: FragmentManager) : FragmentStateP
         return 3;
     }
     override fun getItem(position: Int): Fragment {
-       return OnboardingFragment.newInstance( )
+       return OnboardingFragment.newInstance()
     }
 
 }

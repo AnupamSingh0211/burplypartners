@@ -1,8 +1,9 @@
-package com.hala.burplypartners
+package com.hala.burplypartners.onboarding
 
 import android.os.Bundle
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
+import com.hala.burplypartners.R
 
 class OnboardingActivity : AppCompatActivity() {
 
