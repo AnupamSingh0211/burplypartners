@@ -17,9 +17,9 @@ import com.hala.burplypartners.utils.NavigationUtil
 
 class OnboardingFragment : Fragment() {
 
-    private lateinit var  loginButton : Button
-    companion object {
+    private lateinit var loginButton: Button
 
+    companion object {
         fun newInstance(): OnboardingFragment {
             return OnboardingFragment()
         }
@@ -31,16 +31,16 @@ class OnboardingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        loginButton =  view.findViewById(R.id.fragment_onboarding_login_button);
-        loginButton.setOnClickListener{
-           openLoginScreen()
+        loginButton = view.findViewById(R.id.fragment_onboarding_login_button);
+        loginButton.setOnClickListener {
+            openLoginScreen()
 
         }
 
     }
 
     private fun openLoginScreen() {
-       NavigationUtil.openLoginActivity(activity)
-   
+        NavigationUtil.openLoginActivity(activity)
+
     }
 }

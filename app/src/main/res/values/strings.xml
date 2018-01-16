@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">burply</string>
     <string name="login">login</string>
+    <string name="kindly_enter_your_number">Mobile Number</string>
+    <string name="kindly_enter_valid_number">Kindly enter a valid number</string>
 </resources>
