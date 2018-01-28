@@ -3,4 +3,7 @@
     <string name="login">login</string>
     <string name="kindly_enter_your_number">Mobile Number</string>
     <string name="kindly_enter_valid_number">Kindly enter a valid number</string>
+    <string name="facebook">Facebook</string>
+    <string name="gmail">Gmail</string>
+    <string name="mobile_number">Mobile number</string>
 </resources>

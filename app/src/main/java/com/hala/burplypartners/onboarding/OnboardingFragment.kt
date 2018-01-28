@@ -40,7 +40,7 @@ class OnboardingFragment : Fragment() {
     }
 
     private fun openLoginScreen() {
-        NavigationUtil.openLoginActivity(activity)
+        NavigationUtil.openLoginOptionActivity(activity)
 
     }
 }

@@ -13,6 +13,10 @@ import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.auth.*
 import com.hala.burplypartners.R
 import com.hala.burplypartners.utils.CodeUtil
+import com.hala.burplypartners.utils.NavigationUtil
+import com.google.firebase.auth.FirebaseUser
+
+
 
 
 /**
@@ -20,7 +24,7 @@ import com.hala.burplypartners.utils.CodeUtil
  * @version 1.0
  * @since 2018-01-04
  */
-class LoginActivity : AppCompatActivity() {
+class PhoneNumberLoginActivity : AppCompatActivity() {
 
     private lateinit var phoneNumberText: EditText
     private lateinit var loginButton: Button
@@ -72,7 +76,7 @@ class LoginActivity : AppCompatActivity() {
                         // [START_EXCLUDE silent]
                         // Update the UI and attempt sign in with the phone credential
 
-                        CodeUtil.showToast(this@LoginActivity, "onVerificationCompleted:" + credential)
+                        CodeUtil.showToast(this@PhoneNumberLoginActivity, "onVerificationCompleted:" + credential)
 
                         // updateUI(STATE_VERIFY_SUCCESS, credential)
                         // [END_EXCLUDE]
@@ -95,7 +99,7 @@ class LoginActivity : AppCompatActivity() {
                         } else if (e is FirebaseTooManyRequestsException) {
                             // The SMS quota for the project has been exceeded
                             // [START_EXCLUDE]
-                            CodeUtil.showToast(this@LoginActivity, "Quota Exceeded")
+                            CodeUtil.showToast(this@PhoneNumberLoginActivity, "Quota Exceeded")
                             // [END_EXCLUDE]
                         }
 
@@ -109,7 +113,7 @@ class LoginActivity : AppCompatActivity() {
                         // by combining the code with a verification ID.
                         // Log.d(FragmentActivity.TAG, "onCodeSent:" + verificationId!!)
 
-                        CodeUtil.showToast(this@LoginActivity, "onCodeSent:" + verificationId!!)
+                        CodeUtil.showToast(this@PhoneNumberLoginActivity, "onCodeSent:" + verificationId!!)
                         // Save verification ID and resending token so we can use them later
                         mVerificationId = verificationId
                         mResendToken = token
@@ -132,8 +136,9 @@ class LoginActivity : AppCompatActivity() {
                         val user = task.getResult().getUser()
                         // [START_EXCLUDE]
                         //updateUI(STATE_SIGNIN_SUCCESS, user)
-                        CodeUtil.showToast(this@LoginActivity, "STATE_SIGNIN_SUCCESS")
+                        CodeUtil.showToast(this@PhoneNumberLoginActivity, "STATE_SIGNIN_SUCCESS")
                         // [END_EXCLUDE]
+                        openProfileActivity(user)
                     } else {
                         // Sign in failed, display a message and update the UI
                         // Log.w(FragmentActivity.TAG, "signInWithCredential:failure", task.getException())
@@ -141,13 +146,13 @@ class LoginActivity : AppCompatActivity() {
                             // The verification code entered was invalid
                             // [START_EXCLUDE silent]
                             // mVerificationField.setError("Invalid code.")
-                            CodeUtil.showToast(this@LoginActivity, "Invalid code.")
+                            CodeUtil.showToast(this@PhoneNumberLoginActivity, "Invalid code.")
                             // [END_EXCLUDE]
                         }
                         // [START_EXCLUDE silent]
                         // Update UI
                         // updateUI(STATE_SIGNIN_FAILED)
-                        CodeUtil.showToast(this@LoginActivity, "STATE_SIGNIN_FAILED")
+                        CodeUtil.showToast(this@PhoneNumberLoginActivity, "STATE_SIGNIN_FAILED")
                         // [END_EXCLUDE]
                     }
 
@@ -155,6 +160,12 @@ class LoginActivity : AppCompatActivity() {
 
             })
         }
+    }
+
+    private fun openProfileActivity(user: FirebaseUser?) {
+
+        NavigationUtil.openProfileActivity(this,user);
+
     }
 
     private fun makeCallForVerification() {

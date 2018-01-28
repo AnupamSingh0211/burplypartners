@@ -12,7 +12,7 @@
 //
 //    public static void showToast(Context context, String message){
 //        Toast.makeText(context,message,Toast.LENGTH_SHORT).show();
-//        PhoneAuthProvider.getInstance().verifyPhoneNumber(phoneNumber,60,java.util.concurrent.TimeUnit.SECONDS,this@LoginActivity,mCallbacks)
+//        PhoneAuthProvider.getInstance().verifyPhoneNumber(phoneNumber,60,java.util.concurrent.TimeUnit.SECONDS,this@PhoneNumberLoginActivity,mCallbacks)
 //
 //    }
 //
