@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import com.hala.burplypartners.R
-import com.hala.burplypartners.utils.NavigationUtil
 
 /**
  * @author Anupam Singh
@@ -25,13 +24,14 @@ class OnboardingFragment : Fragment() {
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater?.inflate(R.layout.fragment_onboarding, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.fragment_onboarding, container, false)
     }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        loginButton = view.findViewById(R.id.fragment_onboarding_login_button);
+        loginButton = view.findViewById(R.id.fragment_onboarding_login_button)
         loginButton.setOnClickListener {
             openLoginScreen()
 
@@ -40,7 +40,7 @@ class OnboardingFragment : Fragment() {
     }
 
     private fun openLoginScreen() {
-        NavigationUtil.openLoginOptionActivity(activity)
+        //NavigationUtil.openLoginOptionActivity(activity)
 
     }
 }
