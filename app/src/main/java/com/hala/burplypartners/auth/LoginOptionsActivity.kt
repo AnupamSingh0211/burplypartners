@@ -45,7 +45,7 @@ class LoginOptionsActivity : BurplyPartnerBaseActivity(), View.OnClickListener {
     }
 
     private fun initiateGmailLogin() {
-        val signInIntent = mGoogleSignInClient.getSignInIntent()
+        val signInIntent = mGoogleSignInClient.signInIntent
         startActivityForResult(signInIntent, RC_SIGN_IN)
     }
 
@@ -85,11 +85,11 @@ class LoginOptionsActivity : BurplyPartnerBaseActivity(), View.OnClickListener {
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, object : OnCompleteListener<AuthResult> {
                     override fun onComplete(task: Task<AuthResult>) {
-                        if (task.isSuccessful()) {
+                        if (task.isSuccessful) {
                             // Sign in success, update UI with the signed-in user's information
                             CodeUtil.showToast(this@LoginOptionsActivity,"signInWithCredential:success")
                             //  updateUI(null)
-                            val user = mAuth?.getCurrentUser()
+                            val user = mAuth.currentUser
                                     //updateUI(user)
                             NavigationUtil.openProfileActivity(this@LoginOptionsActivity,user)
                         } else {
@@ -111,6 +111,7 @@ class LoginOptionsActivity : BurplyPartnerBaseActivity(), View.OnClickListener {
     }
 
     private fun openMobileNumberLoginScreen() {
+        NavigationUtil.openMobileNumberLoginActivity(this@LoginOptionsActivity)
 
     }
 
