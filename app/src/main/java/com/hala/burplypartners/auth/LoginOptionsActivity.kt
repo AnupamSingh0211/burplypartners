@@ -151,7 +151,6 @@ class LoginOptionsActivity : BurplyPartnerBaseActivity(), View.OnClickListener {
 
         //init google
         initGoogle()
-
         initFB()
     }
 

@@ -25,7 +25,7 @@ class NavigationUtil {
 //            return intent
 //        }
 
-        private val KEY_FIREBASE_USER = "firebase_user"
+        val KEY_FIREBASE_USER = "firebase_user"
         fun openMobileNumberLoginActivity(context: Context) {
             val intent = Intent(context, PhoneNumberLoginActivity::class.java)
             context.startActivity(intent)
@@ -38,7 +38,7 @@ class NavigationUtil {
 
         fun openProfileActivity(context: Context, user: FirebaseUser?) {
             val intent = Intent(context, ProfileActivity::class.java)
-            intent.putExtra(KEY_FIREBASE_USER, user?.uid);
+            intent.putExtra(KEY_FIREBASE_USER, user?.uid)
             context.startActivity(intent)
         }
     }
