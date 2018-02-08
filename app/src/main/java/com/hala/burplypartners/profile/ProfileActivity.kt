@@ -15,10 +15,7 @@ import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.text.TextUtils
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.Toast
+import android.widget.*
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageMetadata
@@ -41,6 +38,8 @@ class ProfileActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var updateProfile: Button
     private lateinit var udid: String
     private lateinit var profileImage: ImageView
+    private lateinit var openingTime: TextView
+    private lateinit var closingTime: TextView
     private var imageSelectedOnce: Boolean = false
     private val firebaseStorage = FirebaseStorage.getInstance()
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -59,7 +58,11 @@ class ProfileActivity : AppCompatActivity(), View.OnClickListener {
         ownerName = findViewById(R.id.activity_profile_owner_name)
         updateProfile = findViewById(R.id.activity_profile_update_profile)
         profileImage = findViewById(R.id.activity_profile_imageView)
+        openingTime = findViewById(R.id.activity_profile_opening_time)
+        closingTime = findViewById(R.id.activity_profile_closing_time)
         profileImage.setOnClickListener(this)
+        openingTime.setOnClickListener(this)
+        closingTime.setOnClickListener(this)
 
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (ContextCompat.checkSelfPermission(this,
@@ -91,7 +94,19 @@ class ProfileActivity : AppCompatActivity(), View.OnClickListener {
                 val i = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
                 startActivityForResult(i, RESULT_LOAD_IMAGE)
             }
+            R.id.activity_profile_closing_time -> {
+                openTimePicker()
+            }
+            R.id.activity_profile_opening_time -> {
+                openTimePicker()
+            }
         }
+    }
+
+    private fun openTimePicker() {
+        var timeP = TimePickerFragment.newInstance()
+        timeP.show(supportFragmentManager, "to")
+
     }
 
     private fun checkStoragePermission() {
@@ -204,8 +219,6 @@ class ProfileActivity : AppCompatActivity(), View.OnClickListener {
             val myRef = database.getReference("users")
             myRef.setValue(User(profileUrl = url.toString(), truckName = truckNameVal, ownerName = ownerNameVal))
         })
-
-
 
 
     }

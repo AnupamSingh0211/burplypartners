@@ -9,4 +9,6 @@
     <string name="facebook_app_id">1407478142695171</string>
     <string name="fb_login_protocol_scheme">fb1407478142695171</string>
     <string name="enter_correct_profile_details">Enter correct profile details</string>
+    <string name="opening_time">Opening time</string>
+    <string name="closing_time">Closing time</string>
 </resources>
